@@ -1,12 +1,13 @@
-import 'package:crypto_wallet_fbloc/utils/size_config.dart';
+import 'package:crypto_wallet_fbloc/application/auth/sign_up_form/bloc/sign_up_form_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../injection.dart';
 import 'widgets/sign_up_form.dart';
 
 class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -30,7 +31,10 @@ class SignUpPage extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Image.asset('assets/images/office.png'),
-                  SignUpForm(),
+                  BlocProvider(
+                    create: (_) => getIt<SignUpFormBloc>(),
+                    child: SignUpForm(),
+                  ),
                 ],
               ),
             )

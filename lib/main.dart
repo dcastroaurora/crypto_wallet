@@ -1,11 +1,20 @@
-import 'package:crypto_wallet_fbloc/pages/sign_up/sign_up_page.dart';
+import 'package:crypto_wallet_fbloc/injection.dart';
+import 'package:crypto_wallet_fbloc/pages/start/start_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'pages/sign_in/sign_in_page.dart';
+import 'application/simple_observer_bloc.dart';
 // import 'package:device_preview/device_preview.dart';
 // import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  Bloc.observer = SimpleBlocObserver();
+  configureDependencies();
+  runApp(MyApp());
+}
 // void main() => runApp(
 //       DevicePreview(
 //         enabled: !kReleaseMode,
@@ -27,7 +36,7 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(color: Colors.black),
         ),
       ),
-      home: SignInPage(),
+      home: StartPage(),
     );
   }
 }

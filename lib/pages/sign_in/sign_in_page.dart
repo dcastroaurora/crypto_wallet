@@ -1,11 +1,12 @@
-import '../../utils/size_config.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../application/auth/sign_in_form/bloc/sign_in_form_bloc.dart';
+import '../../injection.dart';
 import 'package:flutter/material.dart';
 import 'widgets/sign_in_form.dart';
 
 class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -29,7 +30,12 @@ class SignInPage extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Image.asset('assets/images/login.png'),
-                  SignInForm(),
+                  BlocProvider(
+                    // create: (context) => SignInFormBloc(
+                    //     FirebaseAuthFacade(FirebaseAuth.instance)),
+                    create: (_) => getIt<SignInFormBloc>(),
+                    child: SignInForm(),
+                  ),
                 ],
               ),
             )
