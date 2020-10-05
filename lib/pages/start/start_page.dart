@@ -75,7 +75,7 @@ class StartPage extends StatelessWidget {
                       );
                     },
                     child: Text(
-                      'Sign Up',
+                      'Sign In',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 15.0,
