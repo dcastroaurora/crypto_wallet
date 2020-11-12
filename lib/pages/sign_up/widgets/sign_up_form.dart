@@ -140,7 +140,9 @@ class _SignUpFormState extends State<SignUpForm> {
               ),
             ),
             child: Form(
-              autovalidate: state.showErrorMessages,
+              autovalidateMode: state.showErrorMessages
+                  ? AutovalidateMode.always
+                  : AutovalidateMode.disabled,
               child: Column(
                 children: <Widget>[
                   TextFormField(

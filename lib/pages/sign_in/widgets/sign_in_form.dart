@@ -150,7 +150,9 @@ class _SignInFormState extends State<SignInForm> {
                         borderSide: BorderSide(color: Color(0xffcfd2d8)),
                       ),
                     ),
-                    autovalidate: state.showErrorMessages,
+                    autovalidateMode: state.showErrorMessages
+                        ? AutovalidateMode.always
+                        : AutovalidateMode.disabled,
                     autocorrect: false,
                     autofocus: false,
                   ),
@@ -181,7 +183,9 @@ class _SignInFormState extends State<SignInForm> {
                       ),
                     ),
                     obscureText: true,
-                    autovalidate: state.showErrorMessages,
+                    autovalidateMode: state.showErrorMessages
+                        ? AutovalidateMode.always
+                        : AutovalidateMode.disabled,
                     autocorrect: false,
                     autofocus: false,
                   ),
